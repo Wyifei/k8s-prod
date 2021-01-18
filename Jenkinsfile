@@ -14,7 +14,7 @@ pipeline {
     }      
   }
   environment {
-    cmAddr = "cm.34.210.146.155.nip.io"
+    cmAddr = "cm.yifeiwang1c.mylabserver.com"
   }
   stages {
     stage("deploy") {
