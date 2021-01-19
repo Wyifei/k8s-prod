@@ -9,12 +9,12 @@ pipeline {
     kubernetes {
       cloud "kubernetes"
       label "prod"
-      serviceAccount "build"
+      serviceAccount "default"
       yamlFile "KubernetesPod.yaml"
     }      
   }
   environment {
-    cmAddr = "cm.yifeiwang1c.mylabserver.com"
+    cmAddr = "charts.bitnami.com/bitnami"
   }
   stages {
     stage("deploy") {
@@ -23,10 +23,9 @@ pipeline {
       }
       steps {
         container("helm") {
-          sh "helm repo add chartmuseum http://${cmAddr}"
+          sh "helm repo add bitnami https://${cmAddr}"
           sh "helm repo update"
-          sh "helm dependency update helm"
-          sh "helm upgrade -i prod helm --namespace prod --force"
+          sh "helm upgrade -i myweb bitnami/nginx --namespace prod --force"
         }
       }
     }
