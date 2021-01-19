@@ -8,7 +8,7 @@ pipeline {
   agent {
     kubernetes {
       cloud "kubernetes"
-      label "prod"
+      label "jenkins"
       serviceAccount "jenkins"
       yamlFile "KubernetesPod.yaml"
     }      
