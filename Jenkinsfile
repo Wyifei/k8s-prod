@@ -9,7 +9,7 @@ pipeline {
     kubernetes {
       cloud "kubernetes"
       label "prod"
-      serviceAccount "default"
+      serviceAccount "jenkins"
       yamlFile "KubernetesPod.yaml"
     }      
   }
